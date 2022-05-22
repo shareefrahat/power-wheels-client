@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MenuIcon, XIcon } from "@heroicons/react/solid";
 import Navbar from "./Navbar";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../firebase.init";
+import { signOut } from "firebase/auth";
 // import logo from "../images/pw-log.png";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
   const [open, setOpen] = useState(false);
 
   return (
@@ -32,12 +36,22 @@ const Header = () => {
           </section>
           <section>
             <div>
-              <Link
-                to="/login"
-                className="bg-primary text-black text-md lg:text-lg px-2 lg:px-4 py-1 lg:py-2 rounded font-primary"
-              >
-                LOGIN
-              </Link>
+              {!user ? (
+                <Link
+                  to="/login"
+                  className="bg-primary text-black text-md lg:text-lg px-2 lg:px-4 py-1 lg:py-2 rounded font-primary"
+                >
+                  LOGIN
+                </Link>
+              ) : (
+                <Link
+                  onClick={() => signOut(auth)}
+                  to="/login"
+                  className="bg-primary text-black text-md lg:text-lg px-2 lg:px-4 py-1 lg:py-2 rounded font-primary"
+                >
+                  LOGOUT
+                </Link>
+              )}
             </div>
             {/* {user ? (
               <div>

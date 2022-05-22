@@ -1,7 +1,10 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../firebase.init";
 import CustomLink from "./CustomLink";
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
   const links = [
     {
       id: 1,
@@ -36,7 +39,6 @@ const Navbar = () => {
   ];
 
   let routes;
-  const user = "firebase";
   if (!user) {
     routes = links.filter((link) => link.route === "public");
   } else {

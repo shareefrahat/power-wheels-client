@@ -158,7 +158,7 @@ const Signup = () => {
                 </div>
 
                 <input
-                  className="btn w-full max-w-xs text-white"
+                  className="btn btn-accent w-full max-w-xs text-white"
                   type="submit"
                   value={`${loading ? "Loading..." : "Signup"}`}
                 />

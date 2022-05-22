@@ -8,6 +8,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound/NotFound";
 import Portfolio from "./pages/Portfolio/Portfolio";
+import PrivateRoute from "./pages/PrivateRoute/PrivateRoute";
 import Reviews from "./pages/Reviews/Reviews";
 import Signup from "./pages/Signup/Signup";
 
@@ -18,7 +19,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
-        <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+          }
+        ></Route>
         <Route path="/reviews" element={<Reviews></Reviews>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
