@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Compact Fluorescent Light Bulbs",
+    "price": 3.99,
+    "supplier": "Phillips",
+    "img": "https://i.ibb.co/x8PKMrm/led-bulb.jpg",
+    "description": "16W 15.0 high uvb light reptile lamp compact fluorescent reptile bulbs",
+    "quantity": 385
+  },
+  {
+    "name": "Electric Multipurpose Cable",
+    "price": 16.99,
+    "supplier": "Hitachi",
+    "img": "https://i.ibb.co/Hgn563C/cable.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, minima.",
+    "quantity": 225
+  },
+  {
+    "name": "Four Wing Ceiling Fan",
+    "price": 24.5,
+    "supplier": "Panasonic",
+    "img": "https://i.ibb.co/fX9s0bp/ceiling-fan.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, minima.",
+    "quantity": 292
+  },
+  {
+    "name": "Alkaline Battery",
+    "price": 2.75,
+    "supplier": "Simens",
+    "img": "https://i.ibb.co/VmgDVs1/alkanine-battery.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, minima.",
+    "quantity": 456
+  },
+  {
+    "name": "Hight Quality Multiplug",
+    "price": 4.3,
+    "supplier": "Lenevo",
+    "img": "https://i.ibb.co/tq8r568/multiplug.jpg",
+    "description": "16W 15.0 high uvb light reptile lamp compact fluorescent reptile bulbs",
+    "quantity": 239
+  },
+  {
+    "name": "Electric Tape",
+    "price": 2.5,
+    "supplier": "Osaka",
+    "img": "https://i.ibb.co/w4CjFrp/electric-tape.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, minima.",
+    "quantity": 421
+  },
+  {
+    "name": "Wire Pin and Staples",
+    "price": 3.5,
+    "supplier": "Toolmart",
+    "img": "https://i.ibb.co/s37KRsq/wire-staples.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, minima.",
+    "quantity": 299
+  },
+  {
+    "name": "Electric Switches",
+    "price": 4.99,
+    "supplier": "Toshiba",
+    "img": "https://i.ibb.co/K61mv8w/switch.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, minima.",
+    "quantity": 376
+  },
+  {
+    "name": "Clips and Clamps",
+    "price": 2.4,
+    "supplier": "Voltmart",
+    "img": "https://i.ibb.co/pyhvp2x/clips-clamps.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, minima.",
+    "quantity": 329
+  },
+  {
+    "name": "Circuit Breaker",
+    "price": 18.99,
+    "supplier": "Energypac",
+    "img": "https://i.ibb.co/LZwc024/circuit-breaker.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, minima.",
+    "quantity": 199
+  }
+]
