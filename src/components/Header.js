@@ -22,7 +22,7 @@ const Header = () => {
           </section>
           <section>
             <Link to="/">
-              <p className="text-xl">Power Wheels Ltd.</p>
+              <p className="text-xl font-primary">Power Wheels Ltd.</p>
               {/* {" "}
               <img className="w-[200px] lg:w-[250px]" src={logo} alt="" /> */}
             </Link>
@@ -34,7 +34,7 @@ const Header = () => {
             <div>
               <Link
                 to="/login"
-                className="bg-primary text-black text-md lg:text-lg px-2 lg:px-4 py-1 lg:py-2 rounded"
+                className="bg-primary text-black text-md lg:text-lg px-2 lg:px-4 py-1 lg:py-2 rounded font-primary"
               >
                 LOGIN
               </Link>

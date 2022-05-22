@@ -44,7 +44,7 @@ const Navbar = () => {
   }
   return (
     <>
-      <nav className="text-md lg:text-lg text-white flex flex-col lg:flex-row justify-around gap-5 lg:gap-10">
+      <nav className="text-md lg:text-lg text-white flex flex-col lg:flex-row justify-around gap-5 lg:gap-10 font-primary">
         {routes.map((link) => (
           <CustomLink key={link.id} to={link.path}>
             {link.name}
