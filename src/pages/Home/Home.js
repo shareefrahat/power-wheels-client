@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "./Banner";
+import Posters from "./Posters";
 import Products from "./Products";
 import Reviews from "./Reviews";
 import Summary from "./Summary";
@@ -9,6 +10,9 @@ const Home = () => {
     <>
       <section>
         <Banner></Banner>
+      </section>
+      <section className="my-20">
+        <Posters></Posters>
       </section>
       <section className="my-20">
         <Products></Products>
