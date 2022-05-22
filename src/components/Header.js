@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className="bg-black text-white flex flex-row justify-between items-center px-4 lg:px-10 py-0  shadow-md relative z-40">
+        <div className="bg-accent text-white flex flex-row justify-between items-center px-4 lg:px-10 py-0  shadow-md relative z-40">
           <section className="block lg:hidden py-4">
             <div onClick={() => setOpen(!open)}>
               {open ? (
@@ -63,7 +63,7 @@ const Header = () => {
         <div className="">
           <section
             onClick={() => setOpen(!open)}
-            className={`z-30 block lg:hidden absolute top-10 mt-5 inset-y-0 bg-black py-5 pl-6 pr-16 text-left shadow-md transition-all duration-700 ${
+            className={`z-30 block lg:hidden absolute top-10 mt-5 inset-y-0 bg-accent  py-5 pl-6 pr-16 text-left shadow-md transition-all duration-700 ${
               open ? "left-0 " : "left-[-220px]"
             }`}
           >
