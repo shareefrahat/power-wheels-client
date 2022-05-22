@@ -15,6 +15,7 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
@@ -131,13 +132,21 @@ const Login = () => {
                     )}
                   </label>
                 </div>
-
+                <p className="mb-6">
+                  <small>
+                    Forget Password?{"  "}
+                    <Link className="text-primary" to="/passwordReset">
+                      Reset Now!
+                    </Link>
+                  </small>
+                </p>
                 <input
                   className="btn btn-accent w-full max-w-xs text-white"
                   type="submit"
                   value={`${loading ? "Loading..." : "Login"}`}
                 />
               </form>
+
               <p>
                 <small>
                   Don't have an account?{"  "}

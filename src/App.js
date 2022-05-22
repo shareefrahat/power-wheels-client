@@ -11,6 +11,9 @@ import Portfolio from "./pages/Portfolio/Portfolio";
 import PrivateRoute from "./pages/PrivateRoute/PrivateRoute";
 import Reviews from "./pages/Reviews/Reviews";
 import Signup from "./pages/Signup/Signup";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import PasswordReset from "./pages/Login/PasswordReset";
 
 function App() {
   return (
@@ -32,9 +35,24 @@ function App() {
         <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
+        <Route
+          path="/passwordReset"
+          element={<PasswordReset></PasswordReset>}
+        ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
