@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MenuIcon, XIcon } from "@heroicons/react/solid";
 import logo from "../images/pw-log.png";
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
   const menu = (
     <>
       <li>
@@ -29,7 +30,7 @@ const Header = () => {
   );
   return (
     <>
-      <header className="flex flex-row justify-between items-start lg:items-center p-2 lg:p-4">
+      <header className="flex flex-row justify-between items-center p-2 lg:p-4">
         <div className="bg-base-100">
           <Link to="/">
             <img
@@ -43,28 +44,24 @@ const Header = () => {
           <ul className="menu menu-horizontal p-0">{menu}</ul>
         </div>
         <div className="block lg:hidden">
-          <div className="drawer drawer-end">
-            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content w-fit">
-              <label
-                htmlFor="my-drawer-4"
-                className="drawer-button btn btn-ghost normal-case text-xl"
-              >
-                <MenuIcon className="w-8"></MenuIcon>
-              </label>
-            </div>
-            <div className="drawer-side">
-              <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-              <ul className="menu p-4 overflow-y-auto w-fit bg-base-100 text-base-content">
-                {menu}
-                <label
-                  htmlFor="my-drawer-4"
-                  className="drawer-button btn btn-ghost normal-case text-xl"
-                >
-                  <XIcon className="w-8"></XIcon>
-                </label>
-              </ul>
-            </div>
+          <div onClick={() => setOpen(!open)}>
+            {open ? (
+              <span className="btn btn-ghost">
+                <XIcon className="w-7"></XIcon>
+              </span>
+            ) : (
+              <span className="btn btn-ghost">
+                <MenuIcon className="w-7"></MenuIcon>
+              </span>
+            )}
+            <section
+              onClick={() => setOpen(!open)}
+              className={`z-30 block lg:hidden absolute top-10 mt-5 inset-y-0 bg-base-100 py-5 pl-6 pr-16 text-left shadow-md transition-all duration-700 ${
+                open ? "right-0 " : "right-[-200px]"
+              }`}
+            >
+              <ul className="menu menu-vertical p-0">{menu}</ul>
+            </section>
           </div>
         </div>
       </header>
