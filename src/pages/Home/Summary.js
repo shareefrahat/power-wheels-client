@@ -9,15 +9,14 @@ const Summary = () => {
   return (
     <>
       <section>
-        <div class="divider text-2xl lg:text-4xl font-semibold font-primary">
+        <h2 class="divider text-2xl lg:text-4xl font-semibold font-primary">
           Current Stats
-        </div>
-      </section>
-      <section>
+        </h2>
         <p className="text-xl lg:text-2xl font-secondary mt-5">
           Business Summary In A Nutshell!
         </p>
       </section>
+
       <section>
         <div className="grid grid-cols-1 lg:grid-cols-3 justify-center gap-y-10 gap-x-40 w-fit mx-auto mt-10">
           <div className="flex fle-row gap-4 border border-slate-300 rounded-md p-5 shadow-sm">
