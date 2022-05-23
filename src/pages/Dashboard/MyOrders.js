@@ -44,7 +44,7 @@ const MyOrders = () => {
             <h4 className="text-xl">User: {user?.email}</h4>
             <h4 className="text-xl">Total Orders: {orders.length} Items</h4>
           </section>
-          <section>
+          <section className="my-10 mx-4 border-2 border-primary rounded">
             <div class="overflow-x-auto">
               <table class="table w-full">
                 <thead>

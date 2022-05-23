@@ -106,7 +106,7 @@ const PurchaseForm = ({ product, user }) => {
                 </p>
               </div>
             </div>
-            <div className="w-[350px] text-justify my-5">
+            <div className="w-fit lg:w-[350px] text-justify my-5">
               <p>{description}</p>
             </div>
             <div>

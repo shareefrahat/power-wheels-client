@@ -28,7 +28,7 @@ const Purchase = () => {
           <Loading></Loading>
         ) : (
           <>
-            <div className="my-10">
+            <div className="my-10 mx-5">
               <PurchaseForm
                 key={selectedProduct._id}
                 product={selectedProduct}
