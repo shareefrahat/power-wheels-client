@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 
 const PurchaseForm = ({ product }) => {
   const [user] = useAuthState(auth);
-  const { _id, name, available, minOrder } = product;
+  const { _id, name, img, price, available, minOrder, description } = product;
   let [order, setOrder] = useState({
     productId: _id,
     productName: name,
@@ -51,41 +51,69 @@ const PurchaseForm = ({ product }) => {
 
   return (
     <>
-      <div className="border border-blue-700 rounded p-5">
+      <div className="border border-accent rounded p-5 w-fit mx-auto">
         <div>
-          <h2 className="text-lg lg:text-xl font-semibold font-serif text-blue-700 border border-blue-700 py-2 rounded mb-10">
+          <h2 className="text-lg lg:text-xl font-bold font-secondary text-accent border border-accent py-2 rounded mb-10">
             Order Placement
           </h2>
         </div>
-        <form onSubmit={handleOrder} className="text-left w-full mx-auto ">
+        <form
+          onSubmit={handleOrder}
+          className="text-left w-full mx-auto font-secondary"
+        >
           <div className="mb-6">
-            <p>{name}</p>
-          </div>
-          <div className="mb-6 flex flex-row justify-between items-end">
-            <div className="w-full">
+            <div className="flex flex-row justify-center items-center gap-4 font-secondary">
+              <div>
+                <img
+                  className="w-32 rounded mx-auto border-2 border-primary"
+                  src={img}
+                  alt=""
+                />
+              </div>
+              <div className="font-semibold">
+                <p className="text-2xl font-primary font-normal mb-2">{name}</p>
+                <p className="mb-2">
+                  Price: <span className="text-red-700">${price}</span>
+                  /Unit
+                </p>
+                <p className="mb-2">
+                  Minimum Order:{" "}
+                  <span className="text-red-700">{minOrder}</span> Pcs
+                </p>
+                <p>
+                  Available: <span className="text-red-700">{available}</span>{" "}
+                  Pcs
+                </p>
+              </div>
+            </div>
+            <div className="w-[350px] text-justify my-5">
+              <p>{description}</p>
+            </div>
+            <div>
               <label
                 htmlFor="quantity"
-                className="block mb-2 text-md font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 text-md font-medium text-gray-900 "
               >
-                Quantity
+                Order Quantity
               </label>
               <input
                 onChange={handleQuantity}
                 type="number"
                 id="quantity"
                 name="quantity"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 "
                 value={order.orderQuantity}
                 required
               />
             </div>
+            <div className="divider my-10 font-semibold">Customer Info</div>
           </div>
 
           <button
             type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="btn btn-primary w-full font-secondary font-bold"
           >
-            Place Order
+            Confirm Order
           </button>
         </form>
       </div>

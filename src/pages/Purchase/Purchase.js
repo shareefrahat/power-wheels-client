@@ -17,10 +17,12 @@ const Purchase = () => {
           <Loading></Loading>
         ) : (
           <>
-            <PurchaseForm
-              key={selectedProduct._id}
-              product={selectedProduct}
-            ></PurchaseForm>
+            <div className="my-10">
+              <PurchaseForm
+                key={selectedProduct._id}
+                product={selectedProduct}
+              ></PurchaseForm>
+            </div>
           </>
         )}
       </section>
