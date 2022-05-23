@@ -15,10 +15,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import PasswordReset from "./pages/Login/PasswordReset";
 import Purchase from "./pages/Purchase/Purchase";
+import MyOrders from "./pages/Dashboard/MyOrders";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App max-w-screen-2xl mx-auto">
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
@@ -38,7 +39,9 @@ function App() {
               <Dashboard></Dashboard>
             </PrivateRoute>
           }
-        ></Route>
+        >
+          <Route index element={<MyOrders></MyOrders>}></Route>
+        </Route>
         <Route path="/reviews" element={<Reviews></Reviews>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>

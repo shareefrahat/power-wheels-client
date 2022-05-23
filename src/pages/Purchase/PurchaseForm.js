@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 
 const PurchaseForm = ({ product, user }) => {
+  const [currentUser] = useAuthState(auth);
   const { _id, name, img, price, available, minOrder, description } = product;
   let [order, setOrder] = useState({
     productId: _id,
     productName: name,
+    price,
     orderQuantity: minOrder,
-    user: user?.name,
-    email: user?.email,
+    user: user?.name || currentUser?.displayName,
+    email: user?.email || currentUser?.email,
     address: user?.address,
     phone: user?.phone,
   });
@@ -57,10 +61,10 @@ const PurchaseForm = ({ product, user }) => {
       .then((data) => {
         if (data?.success) {
           toast.success(`Order Successfully Placed for ${name}`);
-          navigate("/dashboard/myOrders");
+          navigate("/dashboard");
         } else {
           toast.error(`${name} is already added`);
-          navigate("/dashboard/myOrders");
+          navigate("/dashboard");
         }
       });
   };

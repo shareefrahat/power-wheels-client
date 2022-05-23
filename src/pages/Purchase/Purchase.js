@@ -14,9 +14,8 @@ const Purchase = () => {
   const { id } = useParams();
   const selectedProduct = products?.find((product) => product._id === id);
 
-  const email = currentUser?.email;
   const { data: user } = useQuery("user", () =>
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`http://localhost:5000/user/${currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
