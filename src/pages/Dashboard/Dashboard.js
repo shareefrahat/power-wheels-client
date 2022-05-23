@@ -26,24 +26,31 @@ const Dashboard = () => {
           <label for="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
             <li>
-              <Link to="/dashboard">My Orders</Link>
+              <Link to="/dashboard">My Profile</Link>
             </li>
-            <li>
-              <Link to="/dashboard/review">Review</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/history">History</Link>
-            </li>
+            {user && !admin && (
+              <>
+                <li>
+                  <Link to="/dashboard/myOrders">My Orders</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/addReview">Add Review</Link>
+                </li>
+              </>
+            )}
             {admin && (
               <>
                 <li>
                   <Link to="/dashboard/allUsers">All Users</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/addDoctor">Add Doctor</Link>
+                  <Link to="/dashboard/manageOrders">Manage Orders</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/manageDoctor">Manage Doctor</Link>
+                  <Link to="/dashboard/manageProducts">Manage Products</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/addProduct">Add Product</Link>
                 </li>
               </>
             )}

@@ -61,10 +61,10 @@ const PurchaseForm = ({ product, user }) => {
       .then((data) => {
         if (data?.success) {
           toast.success(`Order Successfully Placed for ${name}`);
-          navigate("/dashboard");
+          navigate("/dashboard/myOrders");
         } else {
           toast.error(`${name} is already added`);
-          navigate("/dashboard");
+          navigate("/dashboard/myOrders");
         }
       });
   };

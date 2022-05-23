@@ -1,4 +1,5 @@
-import React from "react";
+import { signOut } from "firebase/auth";
+import React, { useEffect } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
@@ -6,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import useToken from "../../hooks/useToken";
 import googleLogo from "../../images/google.png";
@@ -24,8 +26,6 @@ const Signup = () => {
 
   const [token] = useToken(user || gUser);
 
-  const navigate = useNavigate();
-
   let signInError;
 
   if (error || gError) {
@@ -36,13 +36,19 @@ const Signup = () => {
     );
   }
 
-  if (token) {
-    navigate("/appointment");
-  }
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token) {
+      signOut(auth);
+      navigate("/login");
+      toast.success("Signup Successful! Please Login");
+    }
+  }, [token, navigate]);
+
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    console.log("update done");
   };
   return (
     <>
