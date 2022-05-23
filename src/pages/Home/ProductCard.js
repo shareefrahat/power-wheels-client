@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { _id, name, img, price, supplier, quantity, description } = product;
+  const { _id, name, img, price, minOrder, available, description } = product;
   return (
     <>
       <div
@@ -18,10 +18,13 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="w-[300px] h-[250px] mx-auto p-4 overflow-hidden">
           <div className="flex flex-row justify-between items-center">
-            <p className="text-md lg:text-xl text-slate-600">{supplier}</p>
             <p className="text-md lg:text-xl  text-slate-500">
               <span className="text-red-700 font-semibold">${price}</span>
               /Unit
+            </p>
+            <p className="text-md lg:text-xl  text-slate-500">
+              Min Order:
+              <span className="text-red-700 font-semibold">{minOrder}</span>
             </p>
           </div>
           <div className="flex flex-col justify-center gap-2 my-4">
@@ -30,7 +33,7 @@ const ProductCard = ({ product }) => {
             </p>
 
             <p className="text-md lg:text-xl text-slate-600">
-              Stock: <span className="text-blue-700">{quantity}</span>
+              Stock: <span className="text-blue-700">{available}</span>
             </p>
             <p className=" mx-auto text-justify text-lg relative overflow-ellipsis font-serif">
               {description}

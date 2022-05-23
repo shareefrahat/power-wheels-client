@@ -14,6 +14,7 @@ import Signup from "./pages/Signup/Signup";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import PasswordReset from "./pages/Login/PasswordReset";
+import Purchase from "./pages/Purchase/Purchase";
 
 function App() {
   return (
@@ -22,6 +23,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
+        <Route
+          path="/purchase/:id"
+          element={
+            <PrivateRoute>
+              <Purchase></Purchase>
+            </PrivateRoute>
+          }
+        ></Route>
         <Route
           path="/dashboard"
           element={
