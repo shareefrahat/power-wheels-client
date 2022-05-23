@@ -16,6 +16,8 @@ import { ToastContainer } from "react-toastify";
 import PasswordReset from "./pages/Login/PasswordReset";
 import Purchase from "./pages/Purchase/Purchase";
 import MyOrders from "./pages/Dashboard/MyOrders";
+import AllUsers from "./pages/Dashboard/AllUsers";
+import RequireAdmin from "./components/RequireAdmin";
 
 function App() {
   return (
@@ -41,6 +43,14 @@ function App() {
           }
         >
           <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route
+            path="/dashboard/allUsers"
+            element={
+              <RequireAdmin>
+                <AllUsers></AllUsers>
+              </RequireAdmin>
+            }
+          ></Route>
         </Route>
         <Route path="/reviews" element={<Reviews></Reviews>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>

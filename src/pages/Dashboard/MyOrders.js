@@ -11,14 +11,11 @@ const MyOrders = () => {
   const navigate = useNavigate();
 
   const { data: orders, isLoading } = useQuery("orders", () =>
-    fetch(
-      `https://power-wheels-ltd.herokuapp.com/orders?email=${user?.email}`,
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    ).then((res) => {
+    fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("accessToken");
