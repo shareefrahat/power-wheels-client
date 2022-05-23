@@ -7,6 +7,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 import googleLogo from "../../images/google.png";
 
 const Signup = () => {
@@ -21,7 +22,7 @@ const Signup = () => {
 
   const [updateProfile] = useUpdateProfile(auth);
 
-  // const [token] = useToken(user || gUser);
+  const [token] = useToken(user || gUser);
 
   const navigate = useNavigate();
 
@@ -35,10 +36,9 @@ const Signup = () => {
     );
   }
 
-  if (user || gUser) {
-    navigate("/");
+  if (token) {
+    navigate("/appointment");
   }
-
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
