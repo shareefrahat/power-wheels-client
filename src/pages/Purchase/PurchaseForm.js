@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const PurchaseForm = ({ product, user }) => {
@@ -13,6 +14,7 @@ const PurchaseForm = ({ product, user }) => {
     phone: user?.phone,
   });
 
+  const navigate = useNavigate("");
   const handleQuantity = (e) => {
     const { orderQuantity, ...rest } = order;
     const newQuantity = parseInt(e.target.value);
@@ -43,24 +45,24 @@ const PurchaseForm = ({ product, user }) => {
       toast.error(`Max order quantity: ${available}`);
       return;
     }
-    console.log(order);
-    toast.success(`Order Successfully Placed for ${name}`);
-    // navigate("/dashboard/myOrders")
-
-    // const url = `https://electron-valley.herokuapp.com/update/${_id}`;
-    // fetch(url, {
-    //   method: "PUT",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(update),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     if (data.modifiedCount !== 0) {
-    //       toast.success("Information Updated!", { id: "infoUpdated" });
-    //     }
-    //   });
+    const url = `http://localhost:5000/orders`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data?.success) {
+          toast.success(`Order Successfully Placed for ${name}`);
+          navigate("/dashboard/myOrders");
+        } else {
+          toast.error(`${name} is already added`);
+          navigate("/dashboard/myOrders");
+        }
+      });
   };
 
   return (
