@@ -1,16 +1,19 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loading from "../../components/Loading";
 
 const CheckoutForm = ({ order }) => {
+  const stripe = useStripe();
+  const elements = useElements();
+
   const [cardError, setCardError] = useState("");
+  const [success, setSuccess] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [processing, setProcessing] = useState(false);
 
-  const stripe = useStripe();
-  const elements = useElements();
   const { _id, price, orderQuantity, user, email } = order;
 
   useEffect(() => {
@@ -30,10 +33,6 @@ const CheckoutForm = ({ order }) => {
         }
       });
   }, [price, orderQuantity]);
-
-  if (processing) {
-    return <Loading></Loading>;
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,10 +59,11 @@ const CheckoutForm = ({ order }) => {
     });
 
     if (error) {
-      console.log("[error]", error);
       setCardError(error.message);
       toast.error(error.message);
+      setSuccess("");
     } else {
+      setProcessing(true);
       console.log("[PaymentMethod]", paymentMethod);
       setCardError("");
     }
@@ -81,11 +81,12 @@ const CheckoutForm = ({ order }) => {
     if (intentError) {
       setCardError(intentError?.message);
       toast.error(intentError?.message);
+      setProcessing(false);
     } else {
-      setProcessing(true);
+      setCardError("");
       setTransactionId(paymentIntent?.id);
       console.log(paymentIntent);
-      setCardError("");
+      setSuccess("Successful");
       toast.success("Congratulations, Payment Successful!");
 
       const payment = {
@@ -111,10 +112,13 @@ const CheckoutForm = ({ order }) => {
         .then((data) => {
           setProcessing(false);
           console.log(data);
-          console.log(payment);
         });
     }
   };
+
+  if (processing) {
+    return <Loading></Loading>;
+  }
   return (
     <>
       <div>
@@ -145,12 +149,20 @@ const CheckoutForm = ({ order }) => {
             }}
           />
           <button
-            className="bg-success my-5 px-5 rounded"
+            className="btn btn-success btn-sm my-5 px-5 rounded"
             type="submit"
-            disabled={!stripe || !clientSecret}
+            disabled={!stripe || !clientSecret || success}
           >
             Pay
           </button>
+          {success && (
+            <Link
+              className="btn btn-primary btn-sm mx-5"
+              to="/dashboard/myOrders"
+            >
+              Back to Dashboard
+            </Link>
+          )}
         </form>
       </div>
     </>
