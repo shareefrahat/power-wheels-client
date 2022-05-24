@@ -53,8 +53,9 @@ const MyOrders = () => {
                   <tr>
                     <th>S/L</th>
                     <th>Product Name</th>
-                    <th>Price</th>
+                    <th>Price/unit</th>
                     <th>Order Quantity</th>
+                    <th>Total Cost</th>
                     <th>Action</th>
                     <th>Payment</th>
                     <th>Transaction ID</th>
@@ -68,6 +69,7 @@ const MyOrders = () => {
                         <td>{order.productName}</td>
                         <td>${order.price}</td>
                         <td>{order.orderQuantity}</td>
+                        <td>${order.price * order.orderQuantity}</td>
                         <th>
                           {!order.paid && (
                             <>

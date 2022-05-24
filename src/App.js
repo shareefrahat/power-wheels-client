@@ -23,6 +23,7 @@ import MyProfile from "./pages/Dashboard/MyProfile";
 import ManageProducts from "./pages/Dashboard/ManageProducts";
 import AddProduct from "./pages/Dashboard/AddProduct";
 import AddReview from "./pages/Dashboard/AddReview";
+import Payment from "./pages/Dashboard/Payment";
 
 function App() {
   return (
@@ -55,6 +56,10 @@ function App() {
           <Route
             path="/dashboard/myOrders"
             element={<MyOrders></MyOrders>}
+          ></Route>
+          <Route
+            path="/dashboard/payment/:id"
+            element={<Payment></Payment>}
           ></Route>
           <Route
             path="/dashboard/allUsers"
