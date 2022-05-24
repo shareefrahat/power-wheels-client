@@ -12,6 +12,7 @@ const MyOrders = () => {
   const [cancelingProduct, setCancelingProduct] = useState(null);
   const navigate = useNavigate();
 
+  console.log(user.email);
   const {
     data: orders,
     refetch,
@@ -36,10 +37,12 @@ const MyOrders = () => {
     return <Loading></Loading>;
   }
 
+  console.log(orders);
+
   return (
     <>
       {!orders ? (
-        <div>Loading...</div>
+        <Loading></Loading>
       ) : (
         <div>
           <section className="my-10">

@@ -16,6 +16,7 @@ const PurchaseForm = ({ product, user }) => {
     email: user?.email || currentUser?.email,
     address: user?.address,
     phone: user?.phone,
+    status: "pending",
   });
 
   const navigate = useNavigate("");
