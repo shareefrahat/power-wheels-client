@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import avatar from "../../images/user.png";
 
-const ReviewForm = ({ review }) => {
+const ReviewForm = ({ review, refetch }) => {
   const [user] = useAuthState(auth);
-
+  const navigate = useNavigate("");
   const { rating, details } = review;
 
   let [updateReview, setUpdateReview] = useState({
@@ -26,7 +27,7 @@ const ReviewForm = ({ review }) => {
 
   const handleRating = (e) => {
     const { rating, ...rest } = updateReview;
-    const newRating = e.target.value;
+    const newRating = Number(e.target.value);
     const updateDetails = { rating: newRating, ...rest };
     setUpdateReview(updateDetails);
   };
@@ -42,6 +43,7 @@ const ReviewForm = ({ review }) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(updateReview),
     })
@@ -49,6 +51,8 @@ const ReviewForm = ({ review }) => {
       .then((data) => {
         console.log(data);
         toast.success(`Review Successfully Added`);
+        refetch();
+        navigate("/reviews");
       });
   };
   return (

@@ -9,7 +9,11 @@ const AddReview = () => {
 
   const url = `http://localhost:5000/reviews/${user?.email}`;
 
-  const { data: review, isLoading } = useQuery(["review", url], () =>
+  const {
+    data: review,
+    refetch,
+    isLoading,
+  } = useQuery(["review", url], () =>
     fetch(url, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -29,7 +33,11 @@ const AddReview = () => {
         </h4>
       </section>
       <section>
-        <ReviewForm key={review._id} review={review}></ReviewForm>
+        <ReviewForm
+          key={review._id}
+          refetch={refetch}
+          review={review}
+        ></ReviewForm>
       </section>
     </>
   );
