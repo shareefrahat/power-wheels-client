@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import Loading from "../../components/Loading";
+import avatar from "../../images/user.png";
 
 const AllUsers = () => {
   const {
@@ -50,7 +51,8 @@ const AllUsers = () => {
           <table class="table w-full">
             <thead>
               <tr>
-                <th></th>
+                <th>S/L</th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>email</th>
                 <th>Role</th>
@@ -62,6 +64,13 @@ const AllUsers = () => {
                 users?.map((user, index) => (
                   <tr key={user._id}>
                     <th>{index + 1}</th>
+                    <td>
+                      <div class="avatar">
+                        <div class="w-8 rounded-full">
+                          <img src={user.img || avatar} alt="" />
+                        </div>
+                      </div>
+                    </td>
                     <td>{user.name || user?.email.split("@")[0]}</td>
                     <td>{user.email}</td>
                     <td className="uppercase">{user.role || "Customer"}</td>
