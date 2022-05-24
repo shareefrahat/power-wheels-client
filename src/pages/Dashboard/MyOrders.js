@@ -1,24 +1,27 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import auth from "../../firebase.init";
+import CancelModal from "./CancelModal";
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
+  const [cancelingProduct, setCancelingProduct] = useState(null);
   const navigate = useNavigate();
 
-  const { data: orders, isLoading } = useQuery("orders", () =>
-    fetch(
-      `https://power-wheels-ltd.herokuapp.com/orders?email=${user?.email}`,
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    ).then((res) => {
+  const {
+    data: orders,
+    refetch,
+    isLoading,
+  } = useQuery("orders", () =>
+    fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("accessToken");
@@ -33,7 +36,6 @@ const MyOrders = () => {
     return <Loading></Loading>;
   }
 
-  console.log(orders);
   return (
     <>
       {!orders ? (
@@ -53,6 +55,7 @@ const MyOrders = () => {
                     <th>Product Name</th>
                     <th>Price</th>
                     <th>Order Quantity</th>
+                    <th>Action</th>
                     <th>Payment</th>
                     <th>Transaction ID</th>
                   </tr>
@@ -65,10 +68,24 @@ const MyOrders = () => {
                         <td>{order.productName}</td>
                         <td>${order.price}</td>
                         <td>{order.orderQuantity}</td>
+                        <th>
+                          {!order.paid && (
+                            <>
+                              <label
+                                onClick={() => setCancelingProduct(order)}
+                                for="cancel-modal"
+                                class="btn btn-error btn-xs text-white"
+                                disabled={order?.paid && true}
+                              >
+                                Cancel
+                              </label>
+                            </>
+                          )}
+                        </th>
                         <td>
                           {order.price && !order.paid ? (
                             <Link to={`/dashboard/payment/${order._id}`}>
-                              <button className="btn btn-xs btn-error">
+                              <button className="btn btn-xs btn-primary">
                                 Pay
                               </button>
                             </Link>
@@ -87,6 +104,15 @@ const MyOrders = () => {
                 </tbody>
               </table>
             </div>
+          </section>
+          <section>
+            {cancelingProduct && (
+              <CancelModal
+                cancelingProduct={cancelingProduct}
+                refetch={refetch}
+                setCancelingProduct={setCancelingProduct}
+              ></CancelModal>
+            )}
           </section>
         </div>
       )}
