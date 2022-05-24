@@ -149,8 +149,8 @@ const PurchaseForm = ({ product, user }) => {
                 {user?.address || (
                   <textarea
                     onChange={handleAddress}
-                    id="phone"
-                    name="phone"
+                    id="address"
+                    name="address"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 "
                     value={order.address}
                     required

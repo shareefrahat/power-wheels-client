@@ -13,18 +13,18 @@ const Dashboard = () => {
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
-          <h1 className="text-2xl font-bold my-5">Dashboard</h1>
           <label
             for="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden mb-5"
+            className="btn btn-primary drawer-button lg:hidden my-5"
           >
-            Menu
+            Dashboard
           </label>
           <Outlet />
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side border-r-2 border-r-primary">
           <label for="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+            <li className="text-2xl font-bold my-5 font-primary">Dashboard</li>
             <li>
               <Link to="/dashboard">My Profile</Link>
             </li>

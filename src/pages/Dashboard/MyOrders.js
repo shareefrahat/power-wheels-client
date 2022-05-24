@@ -42,7 +42,7 @@ const MyOrders = () => {
         <div>Loading...</div>
       ) : (
         <div>
-          <section>
+          <section className="my-10">
             <h4 className="text-xl">User: {user?.email}</h4>
             <h4 className="text-xl">Total Orders: {orders.length} Items</h4>
           </section>
