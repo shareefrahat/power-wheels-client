@@ -5,7 +5,11 @@ import { toast } from "react-toastify";
 import Loading from "../../components/Loading";
 
 const ManageOrders = () => {
-  const { data: orders, isLoading } = useQuery("orders", () =>
+  const {
+    data: orders,
+    refetch,
+    isLoading,
+  } = useQuery("orders", () =>
     fetch(`http://localhost:5000/orders`, {
       headers: {
         "content-type": "application/json",
@@ -28,6 +32,7 @@ const ManageOrders = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        refetch();
         toast.success("Order Successfully Shipped");
       });
   };
@@ -82,7 +87,7 @@ const ManageOrders = () => {
                           </button>
                         ) : (
                           <>
-                            <CheckCircleIcon className="w-6 inline mx-2 text-green-700"></CheckCircleIcon>{" "}
+                            <CheckCircleIcon className="w-5 inline mx-2 text-green-700"></CheckCircleIcon>{" "}
                             <span className="text-green-700 font-bold">
                               {" "}
                               Shipped
