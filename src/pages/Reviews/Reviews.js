@@ -10,7 +10,7 @@ const Reviews = () => {
       {!reviews ? (
         <Loading></Loading>
       ) : (
-        <div>
+        <div className="m-10">
           <section>
             <h2 className="text-xl lg:text-2xl font-primary my-10">
               Clients Feedbacks
@@ -18,7 +18,7 @@ const Reviews = () => {
           </section>
           <section className="grid grid-cols-1 lg:grid-cols-3 justify-center gap-y-10 gap-x-20 w-fit mx-auto mt-10">
             {reviews.map((review) => (
-              <ReviewCard key={review} review={review}></ReviewCard>
+              <ReviewCard key={review._id} review={review}></ReviewCard>
             ))}
           </section>
         </div>

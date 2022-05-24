@@ -9,6 +9,8 @@ const AddReview = () => {
 
   const url = `http://localhost:5000/reviews/${user?.email}`;
 
+  const placeholder = { id: 1, details: "Write here...", rating: 5 };
+
   const {
     data: review,
     refetch,
@@ -34,9 +36,8 @@ const AddReview = () => {
       </section>
       <section>
         <ReviewForm
-          key={review._id}
           refetch={refetch}
-          review={review}
+          review={review || placeholder}
         ></ReviewForm>
       </section>
     </>

@@ -1,21 +1,30 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import avatar from "../../images/user.png";
 
 const ReviewForm = ({ review, refetch }) => {
-  const [user] = useAuthState(auth);
+  const [currentUser] = useAuthState(auth);
   const navigate = useNavigate("");
   const { rating, details } = review;
+
+  const { data: user } = useQuery("user", () =>
+    fetch(`http://localhost:5000/user/${currentUser?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
 
   let [updateReview, setUpdateReview] = useState({
     rating: rating,
     details: details,
-    name: user.displayName,
-    email: user.email,
-    img: user.photoURL || avatar,
+    name: currentUser.displayName,
+    email: currentUser.email,
+    img: currentUser.photoURL || user?.img,
   });
 
   const handleDetails = (e) => {
@@ -34,11 +43,16 @@ const ReviewForm = ({ review, refetch }) => {
 
   const handleReview = (e) => {
     e.preventDefault();
+    const { img, ...rest } = updateReview;
+    const newImg = user.img || avatar;
+    const updateImg = { img: newImg, ...rest };
+    setUpdateReview(updateImg);
+
     if (updateReview.details.length > 250) {
       toast.error("Details must be within 250 character");
       return;
     }
-    const url = `http://localhost:5000/reviews/${user?.email}`;
+    const url = `http://localhost:5000/reviews/${currentUser?.email}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -49,7 +63,6 @@ const ReviewForm = ({ review, refetch }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         toast.success(`Review Successfully Added`);
         refetch();
         navigate("/reviews");
@@ -64,14 +77,14 @@ const ReviewForm = ({ review, refetch }) => {
         >
           <div className="mb-6">
             <div className="flex flex-col gap-3">
-              <p>Name: {user?.displayName}</p>
+              <p>Name: {currentUser?.displayName}</p>
               <p>
                 Rating:
                 <select
                   onChange={handleRating}
                   name="rating"
                   class="select select-bordered w-fit max-w-xs ml-4"
-                  value={updateReview.rating}
+                  value={updateReview?.rating}
                 >
                   <option>1</option>
                   <option>2</option>
@@ -88,7 +101,7 @@ const ReviewForm = ({ review, refetch }) => {
                   name="phone"
                   rows="4"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 "
-                  value={updateReview.details}
+                  value={updateReview?.details}
                   required
                 />
               </p>
