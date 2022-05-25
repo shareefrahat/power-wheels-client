@@ -17,7 +17,7 @@ const Reviews = () => {
       </section>
 
       <section className="mx-10">
-        {!reviews ? (
+        {!reviews.length ? (
           <Loading></Loading>
         ) : (
           <div>

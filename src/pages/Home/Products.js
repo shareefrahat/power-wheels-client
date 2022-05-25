@@ -17,7 +17,7 @@ const Products = () => {
         </p>
       </section>
       <section>
-        {!products ? (
+        {!products.length ? (
           <div>
             <Loading></Loading>
           </div>

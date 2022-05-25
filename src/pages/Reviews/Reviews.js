@@ -7,7 +7,7 @@ const Reviews = () => {
   const [reviews] = useReviews();
   return (
     <>
-      {!reviews ? (
+      {!reviews.length ? (
         <Loading></Loading>
       ) : (
         <div className="m-10">

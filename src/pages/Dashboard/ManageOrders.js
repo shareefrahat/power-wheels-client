@@ -10,7 +10,7 @@ const ManageOrders = () => {
     refetch,
     isLoading,
   } = useQuery("orders", () =>
-    fetch(`https://power-wheels-ltd.herokuapp.com/orders`, {
+    fetch(`http://localhost:5000/orders`, {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -23,7 +23,7 @@ const ManageOrders = () => {
   }
 
   const handleShipped = (id) => {
-    const url = `https://power-wheels-ltd.herokuapp.com/orders?id=${id}`;
+    const url = `http://localhost:5000/orders?id=${id}`;
     fetch(url, {
       method: "PATCH",
       headers: {

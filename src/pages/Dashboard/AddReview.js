@@ -7,7 +7,7 @@ import ReviewForm from "./ReviewForm";
 const AddReview = () => {
   const [user] = useAuthState(auth);
 
-  const url = `https://power-wheels-ltd.herokuapp.com/reviews/${user?.email}`;
+  const url = `http://localhost:5000/reviews/${user?.email}`;
 
   const placeholder = { id: 1, details: "Write here...", rating: 5 };
 
