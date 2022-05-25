@@ -7,7 +7,9 @@ const Portfolio = () => {
   return (
     <>
       <section>
-        <h2 className="text-xl lg:text-2xl font-primary my-10">My Portfolio</h2>
+        <h2 className="text-2xl lg:text-3xl font-primary my-10">
+          My Portfolio
+        </h2>
       </section>
 
       <section className="w-fit lg:w-1/2 mx-4 lg:mx-auto border border-primary p-5 rounded my-10">

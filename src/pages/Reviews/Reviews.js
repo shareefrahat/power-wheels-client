@@ -12,7 +12,7 @@ const Reviews = () => {
       ) : (
         <div className="m-10">
           <section>
-            <h2 className="text-xl lg:text-2xl font-primary my-10">
+            <h2 className="text-2xl lg:text-3xl font-primary my-10">
               Clients Feedbacks
             </h2>
           </section>

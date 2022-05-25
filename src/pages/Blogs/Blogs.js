@@ -29,7 +29,9 @@ console.log(searchResult);
   return (
     <>
       <section>
-        <h2 className="text-xl lg:text-2xl font-primary my-10">Latest Blogs</h2>
+        <h2 className="text-2xl lg:text-3xl font-primary my-10">
+          Latest Blogs
+        </h2>
       </section>
       <section className="grid grid-cols-1 lg:grid-cols-3 justify-center gap-y-10 gap-x-20 w-fit mx-5 lg:mx-10 my-10">
         <div>

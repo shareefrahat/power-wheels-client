@@ -18,7 +18,7 @@ const CheckoutForm = ({ order }) => {
 
   useEffect(() => {
     const totalCost = price * orderQuantity;
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://power-wheels-ltd.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -99,7 +99,7 @@ const CheckoutForm = ({ order }) => {
 
       console.log(payment);
 
-      const url = `http://localhost:5000/orders/${_id}`;
+      const url = `https://power-wheels-ltd.herokuapp.com/orders/${_id}`;
       fetch(url, {
         method: "PATCH",
         headers: {

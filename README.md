@@ -6,7 +6,7 @@
 
 - Live Site Link: https://power-wheels-ltd.web.app
 
-- Server App Link: http://localhost:5000/
+- Server App Link: https://power-wheels-ltd.herokuapp.com/
 
 - Client Side Repository Link: https://github.com/programming-hero-web-course1/manufacturer-website-client-side-shareefrahat
 
