@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
   return (
     <>
       <div
-        className="relative shadow-md bg-white mx-auto w-fit h-full rounded-md border border-slate-300
+        className="shadow-md bg-white mx-auto w-fit h-full rounded-md border border-slate-300
       "
       >
         <div className="border-b border-b-slate-300">
