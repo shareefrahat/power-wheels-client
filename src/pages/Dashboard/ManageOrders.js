@@ -60,43 +60,41 @@ const ManageOrders = () => {
               </thead>
               <tbody>
                 {orders?.map((order, index) => (
-                  <>
-                    <tr key={order._id}>
-                      <th>{index + 1}</th>
-                      <td>{order.productName}</td>
-                      <td>{order.orderQuantity}</td>
-                      <td>
-                        Name: {order.user} <br /> Email: {order.email} <br />
-                        Phone: {order.phone} <br /> Address: {order.address}
-                      </td>
-                      <td>
-                        {order.paid ? (
-                          <span className="text-green-700 font-bold">Paid</span>
-                        ) : (
-                          <span className="text-red-700 font-bold">Unpaid</span>
-                        )}
-                      </td>
-                      <td>
-                        {order.status === "pending" ? (
-                          <button
-                            onClick={() => handleShipped(order._id)}
-                            class="btn btn-primary btn-xs text-white"
-                            disabled={!order.paid}
-                          >
+                  <tr key={order._id}>
+                    <th>{index + 1}</th>
+                    <td>{order.productName}</td>
+                    <td>{order.orderQuantity}</td>
+                    <td>
+                      Name: {order.user} <br /> Email: {order.email} <br />
+                      Phone: {order.phone} <br /> Address: {order.address}
+                    </td>
+                    <td>
+                      {order.paid ? (
+                        <span className="text-green-700 font-bold">Paid</span>
+                      ) : (
+                        <span className="text-red-700 font-bold">Unpaid</span>
+                      )}
+                    </td>
+                    <td>
+                      {order.status === "pending" ? (
+                        <button
+                          onClick={() => handleShipped(order._id)}
+                          class="btn btn-primary btn-xs text-white"
+                          disabled={!order.paid}
+                        >
+                          Shipped
+                        </button>
+                      ) : (
+                        <>
+                          <CheckCircleIcon className="w-5 inline mx-2 text-green-700"></CheckCircleIcon>{" "}
+                          <span className="text-green-700 font-bold">
+                            {" "}
                             Shipped
-                          </button>
-                        ) : (
-                          <>
-                            <CheckCircleIcon className="w-5 inline mx-2 text-green-700"></CheckCircleIcon>{" "}
-                            <span className="text-green-700 font-bold">
-                              {" "}
-                              Shipped
-                            </span>
-                          </>
-                        )}
-                      </td>
-                    </tr>
-                  </>
+                          </span>
+                        </>
+                      )}
+                    </td>
+                  </tr>
                 ))}
               </tbody>
             </table>

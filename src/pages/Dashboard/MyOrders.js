@@ -1,8 +1,10 @@
+import { CheckCircleIcon } from "@heroicons/react/solid";
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Loading from "../../components/Loading";
 import auth from "../../firebase.init";
 import CancelModal from "./CancelModal";
@@ -38,7 +40,10 @@ const MyOrders = () => {
     return <Loading></Loading>;
   }
 
-  console.log(orders);
+  const handleCopy = (tId) => {
+    navigator.clipboard.writeText(tId);
+    toast.success("Transaction id copied");
+  };
 
   return (
     <>
@@ -63,6 +68,7 @@ const MyOrders = () => {
                     <th>Action</th>
                     <th>Payment</th>
                     <th>Transaction ID</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -70,22 +76,25 @@ const MyOrders = () => {
                     <>
                       <tr key={order._id}>
                         <th>{index + 1}</th>
-                        <td>{order.productName}</td>
-                        <td>${order.price}</td>
-                        <td>{order.orderQuantity}</td>
-                        <td>${order.price * order.orderQuantity}</td>
+                        <td>{order?.productName}</td>
+                        <td>${order?.price}</td>
+                        <td>{order?.orderQuantity}</td>
+                        <td>${order?.price * order?.orderQuantity}</td>
                         <th>
-                          {!order.paid && (
+                          {!order?.paid ? (
                             <>
                               <label
                                 onClick={() => setCancelingProduct(order)}
                                 for="cancel-modal"
                                 class="btn btn-error btn-xs text-white"
-                                disabled={order?.paid && true}
                               >
                                 Cancel
                               </label>
                             </>
+                          ) : (
+                            <button className="btn btn-xs btn-disabled">
+                              cancel
+                            </button>
                           )}
                         </th>
                         <td>
@@ -103,7 +112,36 @@ const MyOrders = () => {
                             </p>
                           )}
                         </td>
-                        <td>{order.transactionId || "N/A"}</td>
+                        <td>
+                          {order?.transactionId ? (
+                            <button
+                              onClick={() => handleCopy(order?.transactionId)}
+                              className="btn btn-secondary btn-xs"
+                            >
+                              Copy TID
+                            </button>
+                          ) : (
+                            "N/A"
+                          )}
+                        </td>
+                        <td>
+                          {order?.status === "shipped" ? (
+                            <>
+                              <CheckCircleIcon className="w-5 inline mx-2 text-green-700"></CheckCircleIcon>{" "}
+                              <span className="text-green-700 font-bold">
+                                {" "}
+                                Shipped
+                              </span>
+                            </>
+                          ) : (
+                            <>
+                              <span className="text-red-700 font-bold">
+                                {" "}
+                                Pending
+                              </span>
+                            </>
+                          )}
+                        </td>
                       </tr>
                     </>
                   ))}

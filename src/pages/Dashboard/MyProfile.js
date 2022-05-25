@@ -8,8 +8,6 @@ import avatar from "../../images/user.png";
 
 const MyProfile = () => {
   const [currentUser] = useAuthState(auth);
-
-  console.log(currentUser.email);
   const {
     data: user,
     refetch,
@@ -98,16 +96,16 @@ const MyProfile = () => {
                     <div>
                       <img
                         className="w-32 rounded-full mx-auto border-2 border-primary aspect-square"
-                        src={updateUser?.img}
+                        src={updateUser?.img || user?.img}
                         alt=""
                       />
                     </div>
                     <div className="font-semibold">
                       <p className="text-2xl font-primary font-normal mb-2">
-                        {updateUser?.name}
+                        {updateUser?.name || user?.name}
                       </p>
                       <p className="text-xl font-normal mb-2">
-                        {updateUser?.email}
+                        {updateUser?.email || user?.email}
                       </p>
                     </div>
                   </div>
@@ -121,7 +119,7 @@ const MyProfile = () => {
                         id="image"
                         name="image"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 "
-                        value={updateUser.img}
+                        value={updateUser?.img || user?.img}
                         required
                       />
                     </p>
@@ -133,7 +131,7 @@ const MyProfile = () => {
                         id="phone"
                         name="phone"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 "
-                        value={updateUser.phone}
+                        value={updateUser?.phone || user?.phone}
                         required
                       />
                     </p>
@@ -144,7 +142,7 @@ const MyProfile = () => {
                         id="address"
                         name="address"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 "
-                        value={updateUser.address}
+                        value={updateUser?.address || user?.address}
                         required
                       />
                     </p>
