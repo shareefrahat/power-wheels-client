@@ -13,8 +13,6 @@ const MyOrders = () => {
   const [user] = useAuthState(auth);
   const [cancelingProduct, setCancelingProduct] = useState(null);
   const navigate = useNavigate();
-
-  console.log(user.email);
   const {
     data: orders,
     refetch,
