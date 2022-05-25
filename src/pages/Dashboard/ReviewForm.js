@@ -12,7 +12,7 @@ const ReviewForm = ({ review, refetch }) => {
   const { rating, details } = review;
 
   const { data: user } = useQuery("user", () =>
-    fetch(`https://power-wheels-ltd.herokuapp.com/user/${currentUser?.email}`, {
+    fetch(`http://localhost:5000/user/${currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -52,7 +52,7 @@ const ReviewForm = ({ review, refetch }) => {
       toast.error("Details must be within 250 character");
       return;
     }
-    const url = `https://power-wheels-ltd.herokuapp.com/reviews/${currentUser?.email}`;
+    const url = `http://localhost:5000/reviews/${currentUser?.email}`;
     fetch(url, {
       method: "PUT",
       headers: {

@@ -32,7 +32,7 @@ const AddProduct = () => {
       description,
     };
 
-    fetch("https://power-wheels-ltd.herokuapp.com/products", {
+    fetch("http://localhost:5000/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,18 +54,18 @@ const AddProduct = () => {
   return (
     <>
       <section>
-        <h2 className="text-xl lg:text-2xl font-primary mt-10">
+        <h2 className="text-2xl lg:text-3xl font-primary mt-10">
           Add a new product
         </h2>
-        <p className="text-md lg:text-lg my-2">Admin: {user?.displayName}</p>
+        <p className="text-lg lg:text-xl my-2">Admin: {user?.displayName}</p>
       </section>
-      <section className="w-full lg:w-1/2 mx-5 lg:mx-auto lg:px-20 py-10 font-secondary">
-        <div className="shadow-md sm:rounded-lg border border-primary p-5 text-left rounded">
+      <section className="font-secondary">
+        <div className="shadow-md rounded-md border border-primary p-5 text-left  mx-auto w-fit lg:w-1/2 my-10">
           <form onSubmit={handleOnSubmit}>
             <div className="mb-6">
               <label
                 htmlFor="event-name"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Name
               </label>
@@ -81,7 +81,7 @@ const AddProduct = () => {
             <div className="mb-6">
               <label
                 htmlFor="img-link"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Image Link
               </label>
@@ -113,7 +113,7 @@ const AddProduct = () => {
             <div className="mb-6">
               <label
                 htmlFor="available"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 text-sm font-medium text-gray-900 "
               >
                 Available Quantity
               </label>
@@ -129,7 +129,7 @@ const AddProduct = () => {
             <div className="mb-6">
               <label
                 htmlFor="order-quantity"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 text-sm font-medium text-gray-900 "
               >
                 Min Order Quantity
               </label>

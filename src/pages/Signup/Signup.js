@@ -1,18 +1,19 @@
-import { signOut } from "firebase/auth";
 import React, { useEffect } from "react";
 import {
+  useAuthState,
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+
 import auth from "../../firebase.init";
 import useToken from "../../hooks/useToken";
 import googleLogo from "../../images/google.png";
 
 const Signup = () => {
+  const [currentUser] = useAuthState(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
@@ -39,12 +40,10 @@ const Signup = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token) {
-      signOut(auth);
-      navigate("/login");
-      toast.success("Signup Successful! Please Login");
+    if (token || currentUser) {
+      navigate("/");
     }
-  }, [token, navigate]);
+  }, [token, navigate, currentUser]);
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
@@ -164,7 +163,7 @@ const Signup = () => {
                 </div>
 
                 <input
-                  className="btn btn-accent w-full max-w-xs text-white"
+                  className="btn btn-primary w-full max-w-xs"
                   type="submit"
                   value={`${loading ? "Loading..." : "Signup"}`}
                 />
@@ -172,7 +171,7 @@ const Signup = () => {
               <p>
                 <small>
                   Already have an account?{" "}
-                  <Link className="text-primary" to="/login">
+                  <Link className="text-secondary" to="/login">
                     Login Now
                   </Link>
                 </small>

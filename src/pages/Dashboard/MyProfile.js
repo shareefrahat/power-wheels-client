@@ -13,7 +13,7 @@ const MyProfile = () => {
     refetch,
     isLoading,
   } = useQuery(["user", currentUser], () =>
-    fetch(`https://power-wheels-ltd.herokuapp.com/user/${currentUser?.email}`, {
+    fetch(`http://localhost:5000/user/${currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -51,7 +51,7 @@ const MyProfile = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    const url = `https://power-wheels-ltd.herokuapp.com/users/${currentUser?.email}`;
+    const url = `http://localhost:5000/users/${currentUser?.email}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -62,7 +62,6 @@ const MyProfile = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         toast.success(`User Information Successfull Updated`);
         refetch();
       });
@@ -80,7 +79,7 @@ const MyProfile = () => {
         </>
       ) : (
         <>
-          <div className="my-10">
+          <div className="my-10 mx-5">
             <div className="border border-accent rounded p-5 w-fit h-fit mx-auto">
               <div>
                 <h2 className="text-lg lg:text-xl font-bold font-secondary text-accent border border-accent py-2 rounded mb-10">
@@ -109,7 +108,7 @@ const MyProfile = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="divider my-5 font-semibold">Contact Info</div>
+                  <div className="divider my-5 font-semibold">Profile Info</div>
                   <div className="flex flex-col gap-3 text-left">
                     <p>
                       Image:{" "}

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import {
+  useAuthState,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
@@ -10,6 +11,8 @@ import googleLogo from "../../images/google.png";
 import useToken from "../../hooks/useToken";
 
 const Login = () => {
+  const [currentUser] = useAuthState(auth);
+
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
@@ -28,10 +31,10 @@ const Login = () => {
   let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (token) {
+    if (token || currentUser) {
       navigate(from, { replace: true });
     }
-  }, [token, from, navigate]);
+  }, [token, from, navigate, currentUser]);
 
   if (error || gError) {
     signInError = (
@@ -136,13 +139,13 @@ const Login = () => {
                 <p className="mb-6">
                   <small>
                     Forget Password?{"  "}
-                    <Link className="text-primary" to="/passwordReset">
+                    <Link className="text-secondary" to="/passwordReset">
                       Reset Now!
                     </Link>
                   </small>
                 </p>
                 <input
-                  className="btn btn-accent w-full max-w-xs text-white"
+                  className="btn btn-primary w-full max-w-xs"
                   type="submit"
                   value={`${loading ? "Loading..." : "Login"}`}
                 />
@@ -151,7 +154,7 @@ const Login = () => {
               <p>
                 <small>
                   Don't have an account?{"  "}
-                  <Link className="text-primary" to="/signup">
+                  <Link className="text-secondary" to="/signup">
                     Create Account
                   </Link>
                 </small>

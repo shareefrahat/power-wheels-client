@@ -17,14 +17,14 @@ const Dashboard = () => {
             for="my-drawer-2"
             className="btn btn-primary drawer-button lg:hidden my-5"
           >
-            Dashboard
+            Dash Menu
           </label>
           <Outlet />
         </div>
-        <div className="drawer-side border-r-2 border-r-primary">
+        <div className="drawer-side lg:border-r-2 lg:border-r-primary">
           <label for="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-            <li className="text-2xl font-bold my-5 font-primary">Dashboard</li>
+            <li className="text-2xl font-bold my-5 font-primary"> Dashboard</li>
             <li>
               <Link to="/dashboard">My Profile</Link>
             </li>

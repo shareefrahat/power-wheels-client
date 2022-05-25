@@ -19,10 +19,10 @@ const ManageProducts = () => {
       ) : (
         <>
           <section className="my-10">
-            <h4 className="text-xl lg:text-2xl mb-2 font-primary">
+            <h4 className="text-2xl lg:text-3xl mb-2 font-primary">
               Manage Product
             </h4>
-            <p className="text-md lg:text-xl my-2">
+            <p className="text-lg lg:text-xl my-2">
               Admin: {user?.displayName}
             </p>
             <h4 className="text-xl">Total Product: {products.length}</h4>

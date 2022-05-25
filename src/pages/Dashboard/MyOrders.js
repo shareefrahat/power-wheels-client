@@ -18,7 +18,7 @@ const MyOrders = () => {
     refetch,
     isLoading,
   } = useQuery(["orders", user], () =>
-    fetch(`https://power-wheels-ltd.herokuapp.com/orders/${user?.email}`, {
+    fetch(`http://localhost:5000/orders/${user?.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
