@@ -13,9 +13,10 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { id } = useParams();
 
-  const url = `http://localhost:5000/orders/${id}`;
+  const url = `http://localhost:5000/order/${id}`;
   const { data: order, isLoading } = useQuery(["order", id], () =>
     fetch(url, {
+      method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -28,10 +29,10 @@ const Payment = () => {
   return (
     <>
       <div>
-        <section>
+        <section className="mt-10">
           <div className="p-5 border border-primary shadow-lg w-fit mx-auto text-xl rounded text-left">
-            <h4 className="text-xl text-secondary font-bold">
-              Hello, {order.user}
+            <h4 className="text-xl font-bold">
+              Hello, <span className="text-secondary "> {order.user}</span>
             </h4>
             <h4 className="text-xl font-bold">
               Please pay for {order.productName}

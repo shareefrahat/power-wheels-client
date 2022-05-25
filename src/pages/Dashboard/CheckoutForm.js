@@ -124,7 +124,7 @@ const CheckoutForm = ({ order }) => {
       <div>
         {transactionId && (
           <p className="font-font text-xl my-5">
-            Your Transaction ID:{" "}
+            Order Transaction ID:{" "}
             <span className="text-green-700">
               {transactionId || "Not Available"}
             </span>
