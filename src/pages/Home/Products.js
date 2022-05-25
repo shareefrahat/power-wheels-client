@@ -22,7 +22,7 @@ const Products = () => {
             <Loading></Loading>
           </div>
         ) : (
-          <div className="grid gird-cols-1 lg:grid-cols-3 gap-10 w-fit mx-auto">
+          <div className="grid gird-cols-1 lg:grid-cols-3 gap-10 w-fit mx-auto my-10">
             {products.slice(0, 6).map((product) => (
               <ProductCard key={product._id} product={product}></ProductCard>
             ))}

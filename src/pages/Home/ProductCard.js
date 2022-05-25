@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
   return (
     <>
       <div
-        className="shadow-md bg-white mx-auto w-fit h-full rounded-md border border-slate-300
+        className="shadow-md bg-white mx-auto w-fit h-full rounded-md border border-slate-300 font-secondary
       "
       >
         <div className="border-b border-b-slate-300">
@@ -16,34 +16,32 @@ const ProductCard = ({ product }) => {
             alt=""
           />
         </div>
-        <div className="w-[300px] h-[250px] mx-auto p-4 overflow-hidden">
-          <div className="flex flex-row justify-between items-center">
-            <p className="text-md lg:text-xl  text-slate-500">
-              <span className="text-red-700 font-semibold">${price}</span>
-              /Unit
-            </p>
-            <p className="text-md lg:text-xl  text-slate-500">
-              Min Order:
-              <span className="text-red-700 font-semibold">{minOrder}</span>
-            </p>
+        <div className="w-[300px] h-fit mx-auto p-4 overflow-hidden">
+          <p className="text-lg lg:text-xl mb-3 font-semibold text-slate-700">
+            {name}
+          </p>
+          <p className=" mx-auto text-justify text-lg h-16 overflow-ellipsis">
+            {description}
+          </p>
+        </div>
+        <div className="flex flex-row justify-evenly mt-4">
+          <div>
+            <p className="text-red-700 font-bold">${price}</p>
+            <p>Price</p>
           </div>
-          <div className="flex flex-col justify-center gap-2 my-4">
-            <p className="text-lg lg:text-xl font-semibold text-slate-700">
-              {name}
-            </p>
-
-            <p className="text-md lg:text-xl text-slate-600">
-              Stock: <span className="text-blue-700">{available}</span>
-            </p>
-            <p className=" mx-auto text-justify text-lg relative overflow-ellipsis font-serif">
-              {description}
-            </p>
+          <div>
+            <p className="font-bold">{minOrder}</p>
+            <p>Min Order</p>
+          </div>
+          <div>
+            <p className="text-green-700 font-bold">{available}</p>
+            <p>Available</p>
           </div>
         </div>
         <div className="m-4">
           <Link
             to={`/purchase/${_id}`}
-            className="w-full block py-1 rounded-md lg:text-xl bg-blue-700 hover:text-white text-white hover:bg-blue-700 border-slate-300 border-t transition duration-300 hover:-translate-x-1 hover:scale-90"
+            className="w-full btn btn-sm btn-primary"
           >
             Purchase
           </Link>

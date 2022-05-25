@@ -22,7 +22,7 @@ const Header = () => {
   );
   return (
     <>
-      <header className="sticky top-0">
+      <header className="sticky top-0 z-50">
         <div className="bg-accent text-white flex flex-row justify-between items-center px-4 lg:px-10 py-0  shadow-md relative z-40">
           <section className="block lg:hidden py-4">
             <div onClick={() => setOpen(!open)}>
