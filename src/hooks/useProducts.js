@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useProducts = () => {
+const useProducts = (deleteProduct) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -8,7 +8,7 @@ const useProducts = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data.reverse()));
   }, [products]);
-  return [products];
+  return [products, deleteProduct];
 };
 
 export default useProducts;

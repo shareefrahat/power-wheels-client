@@ -57,7 +57,7 @@ const AddProduct = () => {
         <h2 className="text-xl lg:text-2xl font-primary mt-10">
           Add a new product
         </h2>
-        <p className="text-md lg:text-lg my-2">Admin: {user.displayName}</p>
+        <p className="text-md lg:text-lg my-2">Admin: {user?.displayName}</p>
       </section>
       <section className="w-full lg:w-1/2 mx-5 lg:mx-auto lg:px-20 py-10 font-secondary">
         <div className="shadow-md sm:rounded-lg border border-primary p-5 text-left rounded">

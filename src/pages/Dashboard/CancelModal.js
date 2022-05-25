@@ -5,7 +5,6 @@ const CancelModal = ({ cancelingProduct, refetch, setCancelingProduct }) => {
   const { productName, productId, email } = cancelingProduct;
 
   const handleCancel = () => {
-    console.log(email, productId);
     const order = { email, productId };
     setCancelingProduct(null);
     fetch(`http://localhost:5000/orders`, {
@@ -18,7 +17,6 @@ const CancelModal = ({ cancelingProduct, refetch, setCancelingProduct }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.deletedCount) {
           toast.success(`Order of ${productName} is canceled`);
         } else {
