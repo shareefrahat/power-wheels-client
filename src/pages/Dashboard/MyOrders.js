@@ -28,7 +28,6 @@ const MyOrders = () => {
         signOut(auth);
         localStorage.removeItem("accessToken");
         navigate("/login");
-        console.log(res);
       }
       return res.json();
     })

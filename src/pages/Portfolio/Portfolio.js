@@ -15,7 +15,7 @@ const Portfolio = () => {
       <section className="w-fit lg:w-1/2 mx-4 lg:mx-auto border border-primary p-5 rounded my-10">
         <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-y-5 lg:gap-x-20 mb-5">
           <div className="lg:text-left">
-            <p className="font-primary text-xl lg:text-3xl">
+            <p className="font-primary text-3xl">
               Mohammad <br /> Sharif Uddin
             </p>
             <p className="mt-2 font-semibold font-secondary">

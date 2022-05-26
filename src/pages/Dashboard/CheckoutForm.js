@@ -84,7 +84,6 @@ const CheckoutForm = ({ order }) => {
     } else {
       setCardError("");
       setTransactionId(paymentIntent?.id);
-      console.log(paymentIntent);
       setSuccess("Successful");
       toast.success("Congratulations, Payment Successful!");
 
@@ -95,8 +94,6 @@ const CheckoutForm = ({ order }) => {
         amount: price * orderQuantity,
         transactionId: paymentIntent?.id,
       };
-
-      console.log(payment);
 
       const url = `https://power-wheels-ltd.herokuapp.com/orders/${_id}`;
       fetch(url, {
@@ -110,7 +107,6 @@ const CheckoutForm = ({ order }) => {
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);
-          console.log(data);
         });
     }
   };
