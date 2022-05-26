@@ -60,8 +60,8 @@ const ReviewCard = ({ review }) => {
   return (
     <>
       <div>
-        <div className="border border-slate-300 rounded-md py-5 shadow-sm">
-          <div className="px-4">
+        <div className="border border-slate-300 rounded-md py-5 shadow-sm h-full">
+          <div className="px-4 h-[180px]">
             <img src={quote} className="w-8 mr-auto" alt="" />
             <p className="font-secondary text-gray-700 text text-justify">
               {details}

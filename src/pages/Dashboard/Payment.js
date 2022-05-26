@@ -13,7 +13,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { id } = useParams();
 
-  const url = `https://power-wheels-ltd.herokuapp.com/order/${id}`;
+  const url = `http://localhost:5000/order/${id}`;
   const { data: order, isLoading } = useQuery(["order", id], () =>
     fetch(url, {
       method: "GET",
@@ -35,17 +35,23 @@ const Payment = () => {
       ) : (
         <>
           <div>
-            <section className="mt-10">
-              <div className="p-5 border border-primary shadow-lg w-fit mx-auto text-xl rounded text-left">
-                <h4 className="text-xl font-bold">
-                  Hello, <span className="text-secondary "> {order.user}</span>
+            <section className="my-10">
+              <h4 className="text-2xl lg:text-3xl mb-2 font-primary">
+                Payment Gateway
+              </h4>
+            </section>
+            <section className="mt-10 font-secondary">
+              <div className="p-5 border border-primary shadow-lg w-fit mx-auto rounded text-left text-xl lg:text-2xl">
+                <h4 className="text-2xl lg:text-3xl mb-5">
+                  Hello, <span className="font-primary"> {order.user}</span>
                 </h4>
-                <h4 className="text-xl font-bold">
-                  Please pay for {order.productName}
+                <h4>
+                  Please Pay for{" "}
+                  <span className="font-semibold">{order.productName}</span>
                 </h4>
-                <p>Price/unit: {order.price}</p>
-                <p>Order Quantity: {order.orderQuantity}</p>
-                <p>
+                <p>Price: ${order.price} /unit</p>
+                <p>Ordered Quantity: {order.orderQuantity} Pcs</p>
+                <p className="mt-5">
                   Total Amount:{" "}
                   <span className="text-red-700">
                     ${order.price * order.orderQuantity}
@@ -53,9 +59,11 @@ const Payment = () => {
                 </p>
               </div>
             </section>
-            <section>
-              <div className="p-5 border border-primary shadow-lg w-full lg:w-1/2 mx-auto text-xl rounded text-left my-10">
-                <div className="mb-5">Payment Gateway</div>
+            <section className="mx-5 lg:mx-auto">
+              <div className="p-5 border border-primary shadow-lg w-full mx-auto lg:w-1/2 lg:mx-auto text-xl rounded text-left my-10 font-secondary">
+                <div className="mb-5 text-lg lg:text-xl font-primary">
+                  Payment Card
+                </div>
                 <div>
                   <Elements stripe={stripePromise}>
                     <CheckoutForm order={order} />

@@ -12,7 +12,7 @@ const ReviewForm = ({ review, refetch }) => {
   const { rating, details } = review;
 
   const { data: user } = useQuery("user", () =>
-    fetch(`https://power-wheels-ltd.herokuapp.com/user/${currentUser?.email}`, {
+    fetch(`http://localhost:5000/user/${currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -42,6 +42,7 @@ const ReviewForm = ({ review, refetch }) => {
   };
 
   const handleReview = (e) => {
+    refetch();
     e.preventDefault();
     const { img, ...rest } = updateReview;
     const newImg = user.img || avatar;
@@ -52,7 +53,7 @@ const ReviewForm = ({ review, refetch }) => {
       toast.error("Details must be within 250 character");
       return;
     }
-    const url = `https://power-wheels-ltd.herokuapp.com/reviews/${currentUser?.email}`;
+    const url = `http://localhost:5000/reviews/${currentUser?.email}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -70,7 +71,7 @@ const ReviewForm = ({ review, refetch }) => {
   };
   return (
     <>
-      <div className="border-2 border-primary rounded w-full lg:w-1/2 p-5 mx-5 lg:mx-auto">
+      <div className="border-2 border-primary rounded w-full lg:w-1/2 p-5 mx-auto">
         <form
           onSubmit={handleReview}
           className="text-left w-full mx-auto font-secondary"

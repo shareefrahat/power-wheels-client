@@ -18,7 +18,7 @@ const CheckoutForm = ({ order }) => {
 
   useEffect(() => {
     const totalCost = price * orderQuantity;
-    fetch("https://power-wheels-ltd.herokuapp.com/create-payment-intent", {
+    fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -53,18 +53,17 @@ const CheckoutForm = ({ order }) => {
     }
 
     // Use your card Element with other Stripe.js APIs
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    const { error } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
 
     if (error) {
       setCardError(error.message);
-      toast.error(error.message);
       setSuccess("");
     } else {
       setProcessing(true);
-      console.log("[PaymentMethod]", paymentMethod);
+
       setCardError("");
     }
 
@@ -99,7 +98,7 @@ const CheckoutForm = ({ order }) => {
 
       console.log(payment);
 
-      const url = `https://power-wheels-ltd.herokuapp.com/orders/${_id}`;
+      const url = `http://localhost:5000/orders/${_id}`;
       fetch(url, {
         method: "PATCH",
         headers: {

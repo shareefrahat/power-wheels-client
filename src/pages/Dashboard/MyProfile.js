@@ -13,7 +13,7 @@ const MyProfile = () => {
     refetch,
     isLoading,
   } = useQuery(["user", currentUser], () =>
-    fetch(`https://power-wheels-ltd.herokuapp.com/user/${currentUser?.email}`, {
+    fetch(`http://localhost:5000/user/${currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -51,7 +51,7 @@ const MyProfile = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    const url = `https://power-wheels-ltd.herokuapp.com/users/${currentUser?.email}`;
+    const url = `http://localhost:5000/users/${currentUser?.email}`;
     fetch(url, {
       method: "PUT",
       headers: {

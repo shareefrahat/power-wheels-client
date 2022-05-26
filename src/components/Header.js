@@ -7,14 +7,13 @@ import auth from "../firebase.init";
 import { signOut } from "firebase/auth";
 import avatar from "../images/user.png";
 import { useQuery } from "react-query";
-// import logo from "../images/pw-log.png";
-
+import pwLogo from "../images/pw-logo.png";
 const Header = () => {
   const [currentUser] = useAuthState(auth);
   const [open, setOpen] = useState(false);
 
   const { data: user } = useQuery(["user", currentUser], () =>
-    fetch(`https://power-wheels-ltd.herokuapp.com/user/${currentUser?.email}`, {
+    fetch(`http://localhost:5000/user/${currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -35,9 +34,7 @@ const Header = () => {
           </section>
           <section>
             <Link to="/">
-              <p className="text-xl font-primary">Power Wheels Ltd.</p>
-              {/* {" "}
-              <img className="w-[200px] lg:w-[250px]" src={logo} alt="" /> */}
+              <img src={pwLogo} className="w-[200px] lg:w-[240px]" alt="" />
             </Link>
           </section>
           <section className="lg:order-none hidden lg:block">
