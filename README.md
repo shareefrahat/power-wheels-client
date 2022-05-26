@@ -6,7 +6,7 @@
 
 - Live Site Link: https://power-wheels-ltd.web.app
 
-- Server App Link: http://localhost:5000/
+- Server App Link: https://power-wheels-ltd.herokuapp.com
 
 - Client Side Repository Link: https://github.com/programming-hero-web-course1/manufacturer-website-client-side-shareefrahat
 
@@ -25,6 +25,7 @@
 - Dynamic Review Cards from database.
 - React Spinner for loading states.
 - Different nav menu for mobile screen.
+- Fancy slider with fade effect on home page.
 - React Toastify to show success and error message.
 
 ## Techs Stuff
@@ -32,6 +33,7 @@
 - React
 - Tailwind
 - DaisyUI
+- SwiperJS
 - React Router
 - React Query
 - Firebase Auth
@@ -39,7 +41,4 @@
 - Hero Icons
 - Toastify
 - Stripe
-- NodeJS
-- MongoDB
-- Express
 - JSON Web Token

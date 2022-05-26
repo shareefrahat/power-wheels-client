@@ -50,11 +50,12 @@ const PurchaseForm = ({ product, user }) => {
       toast.error(`Max order quantity: ${available}`);
       return;
     }
-    const url = `http://localhost:5000/orders`;
+    const url = `https://power-wheels-ltd.herokuapp.com/orders`;
     fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(order),
     })

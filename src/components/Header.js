@@ -13,7 +13,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   const { data: user } = useQuery(["user", currentUser], () =>
-    fetch(`http://localhost:5000/user/${currentUser?.email}`, {
+    fetch(`https://power-wheels-ltd.herokuapp.com/user/${currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

@@ -32,7 +32,7 @@ const AddProduct = () => {
       description,
     };
 
-    fetch("http://localhost:5000/products", {
+    fetch("https://power-wheels-ltd.herokuapp.com/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
