@@ -15,7 +15,7 @@ const Purchase = () => {
   const selectedProduct = products?.find((product) => product._id === id);
 
   const { data: user } = useQuery(["user", currentUser], () =>
-    fetch(`https://power-wheels-ltd.herokuapp.com/user/${currentUser?.email}`, {
+    fetch(`https://power-wheels-server.onrender.com/user/${currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

@@ -50,7 +50,7 @@ const PurchaseForm = ({ product, user }) => {
       toast.error(`Max order quantity: ${available}`);
       return;
     }
-    const url = `https://power-wheels-ltd.herokuapp.com/orders`;
+    const url = `https://power-wheels-server.onrender.com/orders`;
     fetch(url, {
       method: "POST",
       headers: {

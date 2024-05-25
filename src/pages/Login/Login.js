@@ -8,7 +8,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleLogo from "../../images/google.png";
-import useToken from "../../hooks/useToken";
+import useToken from "../../hooks/";
 
 const Login = () => {
   const [currentUser] = useAuthState(auth);

@@ -6,7 +6,7 @@
 
 - Live Site Link: https://power-wheels-ltd.web.app
 
-- Server App Link: https://power-wheels-ltd.herokuapp.com
+- Server App Link: https://power-wheels-server.onrender.com
 
 - Client Side Repository Link:
 

@@ -7,7 +7,7 @@ const CancelModal = ({ cancelingProduct, refetch, setCancelingProduct }) => {
   const handleCancel = () => {
     const order = { email, productId };
     setCancelingProduct(null);
-    fetch(`https://power-wheels-ltd.herokuapp.com/orders`, {
+    fetch(`https://power-wheels-server.onrender.com/orders`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

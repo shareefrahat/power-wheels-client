@@ -18,7 +18,7 @@ const CheckoutForm = ({ order }) => {
 
   useEffect(() => {
     const totalCost = price * orderQuantity;
-    fetch("https://power-wheels-ltd.herokuapp.com/create-payment-intent", {
+    fetch("https://power-wheels-server.onrender.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -95,7 +95,7 @@ const CheckoutForm = ({ order }) => {
         transactionId: paymentIntent?.id,
       };
 
-      const url = `https://power-wheels-ltd.herokuapp.com/orders/${_id}`;
+      const url = `https://power-wheels-server.onrender.com/orders/${_id}`;
       fetch(url, {
         method: "PATCH",
         headers: {

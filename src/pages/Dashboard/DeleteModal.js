@@ -6,7 +6,7 @@ const DeleteModal = ({ deleteProduct, setDeleteProduct }) => {
 
   const handleDelete = () => {
     setDeleteProduct(null);
-    fetch(`https://power-wheels-ltd.herokuapp.com/products?id=${_id}`, {
+    fetch(`https://power-wheels-server.onrender.com/products?id=${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

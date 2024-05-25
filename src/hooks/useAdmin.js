@@ -7,7 +7,7 @@ const useAdmin = (user) => {
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      fetch(`https://power-wheels-ltd.herokuapp.com/admin/${email}`, {
+      fetch(`https://power-wheels-server.onrender.com/admin/${email}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },

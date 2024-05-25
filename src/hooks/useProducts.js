@@ -4,7 +4,7 @@ const useProducts = (deleteProduct) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://power-wheels-ltd.herokuapp.com/products")
+    fetch("https://power-wheels-server.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data.reverse()));
   }, [products]);
